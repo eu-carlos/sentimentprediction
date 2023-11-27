@@ -3,6 +3,8 @@ from flask import Flask, render_template, request
 import pickle
 import nltk
 
+nltk.download("rslp")
+
 app = Flask(__name__)
 
 # Carregar o modelo salvo em PKL que foi treina
