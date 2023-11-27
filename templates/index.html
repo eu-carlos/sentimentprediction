@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentimento Textual</title>
+    <style>
+        body {
+            background-color: #f2f2f2; /* Fundo cinza claro */
+            text-align: center; /* Centralizar o conteúdo */
+            padding: 20px; /* Adicionar algum espaço ao redor do conteúdo */
+            font-family: 'Arial Narrow', 'Arial', sans-serif; /* Substitua 'Arial Narrow' pela fonte desejada */
+        }
+
+        h1 {
+            color: #333; /* Cor do texto escuro para contrastar com o fundo claro */
+        }
+
+        form {
+            margin-top: 20px; /* Adicionar espaço entre o título e o formulário */
+        }
+
+        textarea {
+            width: 50%; /* Faz a textarea ocupar 50% da largura disponível */
+        }
+
+        button {
+            margin-top: 10px; /* Adicionar espaço entre a textarea e o botão */
+        }
+
+        h2 {
+            margin-top: 20px; /* Adicionar espaço acima do resultado da previsão */
+            color: #333; /* Cor do texto escuro para contrastar com o fundo claro */
+        }
+
+        .input-text {
+            width: 50%;
+            box-sizing: border-box; /* Garante que a largura inclui a borda e o preenchimento */
+            margin: 0 auto; /* Centraliza horizontalmente */
+            margin-top: 6px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Aplicação em Machine Learning para prever o sentimento do texto</h1>
+    <h3>- Alegria, Amor ou Felicidade - </h3>
+    <form method="post" action="{{ url_for('predict') }}">
+        <textarea name="text" rows="4" cols="50" required placeholder="Insira o texto aqui"></textarea><br>
+        <button type="submit">Prever</button>
+    </form>
+
+    {% if prediction %}
+        <h2>Previsão: {{ prediction }}</h2>
+        <div class="input-text-container">
+            <span class="input-text-label"><strong>Texto Inserido:</strong></span>
+            <p class="input-text">{{ input_text }}</p>
+        </div>
+    {% endif %}
+</body>
+</html>
